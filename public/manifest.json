@@ -1,0 +1,14 @@
+{
+  "short_name": "LPIS-Bot",
+  "name": "LPIS-Bot",
+  "version": "1.0.0",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "manifest_version": 3,
+  "background_color": "#ffffff",
+  "action":{
+      "default_popup": "index.html",
+      "default_title": "LPIS-Bot"
+  }
+}
