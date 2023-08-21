@@ -11,6 +11,7 @@ function App() {
   const [coursename, setCoursename] = useState('')
   const [fireDate, setFireDate] = useState('July 20, 69 20:17:40 GMT+00:00')
   const [time, setTime] = useState('')
+  const [sblw, setSbwl] = useState(false)
   const [plan, setPlan] = useState('')
   const [date, setDate] = useState(Date())
 
@@ -34,7 +35,8 @@ function App() {
         lvname: coursename,
         lvcode: coursenumber,
         time : parseInt(time),
-        plan: plan
+        plan: plan,
+        sbwl: sblw,
        // coursetype: coursetype 
       }).then((response) => {
         if (response.success) {
@@ -49,6 +51,7 @@ function App() {
      
   }
 
+ 
 
 
   useEffect(()=>{
@@ -110,6 +113,12 @@ function App() {
      </select>
      <br></br>
       <br></br>
+      <h4 className='LPIS-header'>Falls Sbwl, dann true  <select name='Falls Sbwl, dann true' onChange={(e)=>{
+      setSbwl(e.target.value)
+     }}>
+      <option id={1} value={false} >false</option>
+      <option id={0} value={true} >true</option>
+     </select></h4>  
      <button className='button' onClick={()=>{activateBot()}}>FIRE!</button>
     </div>
          <div className='timer' style={{display: time !== '' ? 'flex' : 'none'}}>
@@ -121,7 +130,8 @@ function App() {
         setPassword('')
         setUsername('')
         setCoursename('')
-        setCoursenumber('')}}>abbrechen</button>
+        setCoursenumber('')
+        setSbwl('')}}>abbrechen</button>
          </div>
          </>
 
