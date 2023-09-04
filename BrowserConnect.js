@@ -61,7 +61,7 @@ var jsonParser = bodyParser.json()
              console.log((myDate - Date.now()))
              setTimeout(async ()=>{
               await driver.navigate().refresh();
-              await driver.findElement(By.xpath(`//tr[contains(.,'${lvcode}')]//input[contains(@value,'anmelden')]`))//.click()
+              await driver.findElement(By.xpath(`//tr[contains(.,'${lvcode}')]//input[contains(@value,'anmelden')]`)).click()
             }, 
              (myDate - Date.now()) - 50)
             }
