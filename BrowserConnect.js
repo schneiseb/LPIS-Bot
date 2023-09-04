@@ -23,7 +23,7 @@ var jsonParser = bodyParser.json()
 
     async function example(username, password, lvname, lvcode, time, plan, sbwl) {
       const today = new Date()
-      const myDate = new Date(`${today.getFullYear().toString()}-${parseInt(today.getUTCMonth().toString()) < 10 ? '0' : ''}${parseInt(today.getUTCMonth().toString())+1}-${today.getDate().toString()}T${time-2}:00:00Z`)
+      const myDate = new Date(`${today.getFullYear().toString()}-${parseInt(today.getUTCMonth().toString()) < 10 ? '0' : ''}${parseInt(today.getUTCMonth().toString())+1}-${today.getDate().toString()}T${time-2>9 ? '' : '0'}${time - 2}:00:00Z`)
       console.log(myDate.toString())
       console.log('SBSWL:',sbwl)
         let driver = await new Builder().forBrowser('chrome').build();

@@ -3,7 +3,6 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-
 function App() {
 
   const [username, setUsername] = useState('')
@@ -16,6 +15,7 @@ function App() {
   const [date, setDate] = useState(Date())
 
   const [coursenumber, setCoursenumber] = useState('')
+
 
 
 
@@ -51,7 +51,8 @@ function App() {
      
   }
 
- 
+  const today = new Date()
+  const myDate = new Date(`${today.getFullYear().toString()}-${parseInt(today.getUTCMonth().toString()) < 10 ? '0' : ''}${parseInt(today.getUTCMonth().toString())+1}-${today.getDate().toString()}T${time-2>9 ? '' : '0'}${time - 2}:00:00Z`)
 
 
   useEffect(()=>{
@@ -60,9 +61,6 @@ function App() {
         clearInterval(timer)
     }
   }, [time || date])
-
-  const today = new Date()
-  const myDate = new Date(`${today.getFullYear().toString()}-${parseInt(today.getUTCMonth().toString()) < 10 ? '0' : ''}${parseInt(today.getUTCMonth().toString())+1}-${today.getDate().toString()}T${time - 2}:00:00Z`)
 
 
   
@@ -110,6 +108,7 @@ function App() {
       <option id={6} value={15}>15:00</option>
       <option id={7} value={16}>16:00</option>
       <option id={8} value={17}>17:00</option>
+      <option id={9} value={18}>18:00</option>
      </select>
      <br></br>
       <br></br>
