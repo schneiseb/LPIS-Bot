@@ -23,7 +23,11 @@ var jsonParser = bodyParser.json()
 
     async function example(username, password, lvname, lvcode, time, plan, sbwl) {
       const today = new Date()
-      const myDate = new Date(`${today.getFullYear().toString()}-${parseInt(today.getUTCMonth().toString()) < 10 ? '0' : ''}${parseInt(today.getUTCMonth().toString())+1}-${today.getDate().toString()}T${time-2>9 ? '' : '0'}${time - 2}:00:00Z`)
+      const myDate = new Date(
+      `${new Date().toISOString().split('T')[0]}T${
+        time - 2 >= 10 ? time - 2 : '0' + (time - 2)
+      }:00:00Z`
+    );
       console.log(myDate.toString())
       console.log('SBSWL:',sbwl)
         let driver = await new Builder().forBrowser('chrome').build();
@@ -61,6 +65,7 @@ var jsonParser = bodyParser.json()
              console.log((myDate - Date.now()))
              setTimeout(async ()=>{
               await driver.navigate().refresh();
+		console.log(await driver.findElement(By.xpath(`//tr[contains(.,'${lvcode}')]//input[contains(@value,'anmelden')]`)))
               await driver.findElement(By.xpath(`//tr[contains(.,'${lvcode}')]//input[contains(@value,'anmelden')]`)).click()
             }, 
              (myDate - Date.now()) - 50)
